@@ -12,7 +12,7 @@ let scene, renderer, camera, material, light, orbit;; // Initial variables
 scene = new THREE.Scene();    // Create main scene
 renderer = initRenderer();    // Init a basic renderer
 camera = initCamera(new THREE.Vector3(0, 15, 30)); // Init camera in this position
-material = setDefaultMaterial(); // create a basic material
+material = setDefaultMaterial('orange'); // create a basic material
 light = initDefaultBasicLight(scene); // Create a basic light to illuminate the scene
 orbit = new OrbitControls( camera, renderer.domElement ); // Enable mouse rotation, pan, zoom etc.
 
@@ -27,23 +27,16 @@ scene.add( axesHelper );
 let plane = createGroundPlaneXZ(20, 20)
 scene.add(plane);
 
-// create a cube
-let cubeGeometry = new THREE.BoxGeometry(4, 4, 4);
-let cube = new THREE.Mesh(cubeGeometry, material);
-// position the cube
-cube.position.set(0.0, 2.0, 0.0);
-// add the cube to the scene
-scene.add(cube);
+for (let i = -1; i <= 1; i++) {
+  for (let j = -1; j <= 1; j++) {
+    const cubeGeometry = new THREE.BoxGeometry(4, 4, 4);
+    const cube = new THREE.Mesh(cubeGeometry, material);
+    cube.position.set(i * 8, 2.0, j * 8);
+    scene.add(cube);
+  }
+}
 
-let cubeGeometry2 = new THREE.BoxGeometry(1, 1, 1);
-let cube2 = new THREE.Mesh(cubeGeometry2, material);
-cube2.position.set(8.0, 0.5, 0.0);
-scene.add(cube2);
 
-let cubeGeometry3 = new THREE.BoxGeometry(2, 2, 2);
-let cube3 = new THREE.Mesh(cubeGeometry3, material);
-cube3.position.set(-4.0, 1.0, 4.0);
-scene.add(cube3);
 
 // Use this to show information onscreen
 let controls = new InfoBox();
