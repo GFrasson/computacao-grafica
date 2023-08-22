@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { OrbitControls } from '../build/jsm/controls/OrbitControls.js';
+import { OrbitControls } from '../../build/jsm/controls/OrbitControls.js';
 import {
   initRenderer,
   initCamera,
@@ -8,7 +8,7 @@ import {
   InfoBox,
   onWindowResize,
   createGroundPlaneXZ
-} from "../libs/util/util.js";
+} from "../../libs/util/util.js";
 
 const scene = new THREE.Scene();    // Create main scene
 const renderer = initRenderer();    // Init a basic renderer
@@ -28,10 +28,18 @@ scene.add(axesHelper);
 const plane = createGroundPlaneXZ(20, 20)
 scene.add(plane);
 
-const cubeGeometry = new THREE.BoxGeometry(4, 4, 4);
-const cube = new THREE.Mesh(cubeGeometry, material);
-cube.position.set(0.0, 2.0, 0.0);
-scene.add(cube);
+const tableTopGeometry = new THREE.BoxGeometry(1, 1, 1);
+const tableTop = new THREE.Mesh(tableTopGeometry, material);
+tableTop.translateY(3.15);
+tableTop.scale.set(11, 0.3, 6);
+scene.add(tableTop);
+
+const foot1Geometry = new THREE.CylinderGeometry(0.2, 0.2, 3, 32);
+const foot1 = new THREE.Mesh(foot1Geometry, material);
+foot1.scale.set(1.0 / 11, 1.0 / 0.3, 1.0 / 6);
+tableTop.add(foot1);
+
+
 
 // Use this to show information onscreen
 const controls = new InfoBox();
