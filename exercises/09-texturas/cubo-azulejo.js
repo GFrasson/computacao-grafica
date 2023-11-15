@@ -44,7 +44,7 @@ scene.add(cube);
 // Function to set basic material or textures
 // You can set just a color, just a texture or both
 function setMaterial(color, file = null, repeatU = 1, repeatV = 1, offsetU = 0, offsetV = 0) {
-    if (!color) color = 'rgb(23355,255,255)';
+    if (!color) color = 'rgb(255,255,255)';
 
     let material;
     if (!file) {
