@@ -18,7 +18,7 @@ const ambientLight = new THREE.AmbientLight('rgb(80, 80, 80)');
 scene.add(ambientLight);
 
 const directionalLight = new THREE.DirectionalLight('rgb(255, 255, 255)', 1);
-directionalLight.position.set(0, 30, 30);
+directionalLight.position.set(0, 0, 10);
 scene.add(directionalLight);
 
 const boxGeometry = new THREE.BoxGeometry(5, 5, 0.5);
