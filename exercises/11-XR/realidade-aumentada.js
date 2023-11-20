@@ -20,7 +20,7 @@ light = initDefaultSpotlight(scene, new THREE.Vector3(25, 30, 20)); // Use defau
 
 const planeGeometry = new THREE.PlaneGeometry(10, 10, 10, 10);
 const planeMaterial = new THREE.MeshStandardMaterial({
-    color: 'rgb(255, 255, 255)',
+    color: 'rgb(100, 100, 100)',
     transparent: true,
     opacity: 0.3
 });
